@@ -1,139 +1,65 @@
-// Get DOM elements
-const timerElement = document.querySelector('.timer');
-const plantImage = document.querySelector('.plant-img');
-const dropsImage = document.querySelector('.manag-drops img');
-const seedButton = document.getElementById('seedButton');
-const waterButton = document.getElementById('waterButton');
-const transferButton = document.getElementById('transferButton');
+document.addEventListener('DOMContentLoaded', function () {
+    // Показать всплывающее окно при загрузке страницы
+    document.getElementById('languagePopup').classList.remove('hidden');
 
-// Initialize variables
-let dropsStage = 5;
-let plantStage = 0;
-let timeLeft = 5;
-let timerInterval;
-let refillInterval;
-let isTreeGrown = false;
+    // Обработчики кликов для выбора языка
+    document.getElementById('langRu').addEventListener('click', function () {
+        document.getElementById('languagePopup').classList.add('hidden');
+    });
 
-// Objects with paths to plant and drops images
-const plantImages = {
-  seed: './img/1.svg',
-  sapling1: './img/2.svg',
-  sapling2: './img/3.svg',
-  sapling3: './img/4.svg',
-  sapling4: './img/5.svg',
-  sapling5: './img/6.svg',
-  sapling6: './img/7.svg'
-};
+    document.getElementById('langEn').addEventListener('click', function () {
+        document.getElementById('languagePopup').classList.add('hidden');
+    });
 
-const dropsImages = {
-  0: '/img/drops/zero.svg',
-  1: '/img/drops/one.svg',
-  2: '/img/drops/two.svg',
-  3: '/img/drops/three.svg',
-  4: '/img/drops/four.svg',
-  5: '/img/drops/five.svg'
-};
+    let timerElement = document.getElementById('timer');
+    let seedButton = document.getElementById('seedButton');
+    let waterButton = document.getElementById('waterButton');
+    let mainImage = document.getElementById('mainImage');
+    let drops = document.querySelectorAll('.drop');
+    let currentDrop = 0;
+    let currentStage = 0;
+    let timer;
 
-// Function to update the timer
-function updateTimer() {
-  const seconds = timeLeft < 10 ? `0${timeLeft}` : timeLeft;
-  timerElement.textContent = `00:${seconds}`;
-}
+    // Массив изображений для различных стадий дерева
+    const treeStages = [
+        './img/2.svg',
+        './img/3.svg',
+        './img/4.svg',
+        './img/5.svg',
+        './img/6.svg'
+    ];
 
-// Function to start the timer
-function startTimer() {
-  clearInterval(timerInterval);
-  timeLeft = 5;
-  updateTimer();
-  seedButton.disabled = true;
-  waterButton.disabled = true; // Блокируем кнопку полива
+    // Обработчик клика по кнопке семечка
+    seedButton.addEventListener('click', function () {
+        if (!timer && currentStage < treeStages.length) {
+            mainImage.src = treeStages[currentStage]; // Меняем основное изображение на следующее
+            drops[currentDrop].src = './img/bluedrop.svg'; // Меняем изображение капли на заполненное
+            currentDrop++;
+            currentStage++;
+            if (currentDrop < drops.length) {
+                startTimer();
+            } else {
+                seedButton.style.display = 'none';
+                waterButton.style.display = 'block';
+            }
+        }
+    });
 
-  timerInterval = setInterval(() => {
-    timeLeft--;
-    updateTimer();
-
-    if (timeLeft === 0) {
-      clearInterval(timerInterval);
-      seedButton.disabled = false;
-
-      if (dropsStage === 0) {
-        refillDrops();
-      } else {
-        waterButton.disabled = false; // Разблокируем кнопку полива, если есть капли
-      }
+    // Функция запуска таймера
+    function startTimer() {
+        let timeLeft = 3; // Установить таймер на 3 секунды
+        seedButton.disabled = true;
+        timer = setInterval(function () {
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                timer = null;
+                seedButton.disabled = false;
+                timerElement.textContent = '00:00:00';
+            } else {
+                let seconds = timeLeft % 60;
+                timerElement.textContent = `00:00:${seconds < 10 ? '0' + seconds : seconds}`;
+                timeLeft--;
+            }
+        }, 1000);
     }
-  }, 1000);
-}
-
-
-// Function to refill the drops
-function refillDrops() {
-  clearInterval(refillInterval);
-  timeLeft = 10;
-  updateTimer();
-  waterButton.disabled = true; // Блокируем кнопку полива
-
-  refillInterval = setInterval(() => {
-    timeLeft--;
-    updateTimer();
-
-    if (timeLeft === 0) {
-      clearInterval(refillInterval);
-      dropsStage = 5;
-      dropsImage.src = dropsImages[dropsStage];
-      waterButton.disabled = false; // Разблокируем кнопку полива после пополнения капель
-    }
-  }, 1000);
-}
-
-
-
-// Event listener for seed button click
-seedButton.addEventListener('click', () => {
-  if (!seedButton.disabled) {
-    seedButton.style.display = 'none';
-    waterButton.style.display = 'block';
-    plantStage++;
-    plantImage.src = plantImages[`sapling${plantStage}`];
-    startTimer();
-    seedButton.disabled = true;
-    // Rest of the code for seed button click
-  }
-});
-
-
-// Event listener for water button click
-waterButton.addEventListener('click', () => {
-  if (!isTreeGrown) {
-    if (dropsStage > 0 && !waterButton.disabled) {
-      dropsStage--;
-      dropsImage.src = dropsImages[dropsStage];
-      plantStage++;
-      plantImage.src = plantImages[`sapling${plantStage}`];
-
-      if (dropsStage === 0) { 
-        refillDrops(); // Сразу запускаем пополнение капель
-      } else {
-        startTimer(); // Запускаем таймер, только если есть капли
-      }
-
-      if (plantStage === 6) {
-        isTreeGrown = true;
-        waterButton.style.display = 'none';
-        transferButton.style.display = 'block';
-      }
-    }
-  }
-});
-
-// Event listener for transfer button click
-transferButton.addEventListener('click', () => {
-  // Code to transfer the tree to the reserve
-});
-
-// Event listener for DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-  seedButton.style.display = 'block';
-  waterButton.style.display = 'none';
-  transferButton.style.display = 'none';
 });
