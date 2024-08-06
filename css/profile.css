@@ -1,0 +1,134 @@
+#avatar{
+    width: 120px;
+}
+.center-content {
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.center-text {
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-name {
+    margin-top: 28px;
+    font-size: 18px;
+    /* background: green; */
+}
+
+.rating {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+}
+.rating-p {
+    margin: 0 5px;
+}
+
+.balance {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 40px;
+}
+.podpis {
+}
+.center-btns {
+}
+.eco-active, .tasks-complete {
+    background: #63F23B;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 30px;
+    border-radius: 30px;
+    margin-top: 20px;
+    width: 80vw;
+}
+.eco-active-text {
+}
+.eco-active-counter {
+}
+.tasks-complete {
+    margin-top: 20px;
+    background: white;
+    border: 2px #63F23B solid;
+}
+.top{
+    z-index: 2;
+}
+.bottom{
+    z-index: 2;
+    /* height: 40vh; */
+}
+.blueblock, .bluecontent{
+
+    align-items: start;
+}
+
+.profile-unfi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: red; */
+    color: white;
+    width: 100%;
+}
+.infi1 {
+    /* background: blue; */
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 2px solid grey;
+}
+.procent, .fast {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-right: 1px solid grey;
+}
+.fast {
+    border-left: 1px solid grey;
+    border-right: none;
+}
+.infi2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: green; */
+    width: 100%;
+    padding: 30px;
+}
+.infi2-inner {
+    /* background: purple; */
+    width: 80%;
+
+}
+.infi2-friends p, .infi2-mytrees p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.infi2-friends img, .infi2-mytrees img{
+    margin-right: 15px;
+}
+.infi2-friends, .infi2-mytrees {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    padding: 10px 0;
+}
+.infi2-mytrees {
+    border-top: 1px solid grey;
+    border-bottom: none;
+}

@@ -15,8 +15,9 @@
 }
 
 body {
-    background: url(../img/bg.png);
-    background-size: cover;
+    background: url(../img/bg1.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
     font-family: Arial, sans-serif;
 }
 
@@ -37,7 +38,8 @@ body {
 
 .top {
     padding: 15px 0;
-    height: 40vh;
+    /* height: 40vh; */
+    /* height: 100%; */
 }
 
 .header {
