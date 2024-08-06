@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let timerElement = document.getElementById('timer');
     let seedButton = document.getElementById('seedButton');
     let waterButton = document.getElementById('waterButton');
+    let transferButton = document.getElementById('transferButton');
     let mainImage = document.getElementById('mainImage');
     let drops = document.querySelectorAll('.drop');
     let currentDrop = 0;
@@ -36,11 +37,24 @@ document.addEventListener('DOMContentLoaded', function () {
             drops[currentDrop].src = './img/bluedrop.svg'; // Меняем изображение капли на заполненное
             currentDrop++;
             currentStage++;
-            if (currentDrop < drops.length) {
-                startTimer();
+            seedButton.style.display = 'none'; // Скрыть кнопку семечка
+            waterButton.style.display = 'block'; // Показать кнопку воды
+            startTimer();
+        }
+    });
+
+    // Обработчик клика по кнопке капли
+    waterButton.addEventListener('click', function () {
+        if (!timer && currentStage < treeStages.length) {
+            mainImage.src = treeStages[currentStage]; // Обновляем изображение дерева
+            drops[currentDrop].src = './img/bluedrop.svg'; // Меняем изображение капли на заполненное
+            currentDrop++;
+            currentStage++;
+            if (currentDrop >= drops.length) {
+                waterButton.style.display = 'none'; // Скрыть кнопку капли
+                transferButton.style.display = 'block'; // Показать кнопку передачи
             } else {
-                seedButton.style.display = 'none';
-                waterButton.style.display = 'block';
+                startTimer();
             }
         }
     });
@@ -48,12 +62,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Функция запуска таймера
     function startTimer() {
         let timeLeft = 3; // Установить таймер на 3 секунды
-        seedButton.disabled = true;
+        disableButtons(); // Заблокировать кнопки
         timer = setInterval(function () {
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 timer = null;
-                seedButton.disabled = false;
+                enableButtons(); // Разблокировать кнопки
                 timerElement.textContent = '00:00:00';
             } else {
                 let seconds = timeLeft % 60;
@@ -61,5 +75,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 timeLeft--;
             }
         }, 1000);
+    }
+
+    // Функция блокировки кнопок
+    function disableButtons() {
+        seedButton.disabled = true;
+        waterButton.disabled = true;
+        seedButton.classList.add('disabled');
+        waterButton.classList.add('disabled');
+    }
+
+    // Функция разблокировки кнопок
+    function enableButtons() {
+        seedButton.disabled = false;
+        waterButton.disabled = false;
+        seedButton.classList.remove('disabled');
+        waterButton.classList.remove('disabled');
     }
 });

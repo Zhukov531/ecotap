@@ -227,3 +227,7 @@ body {
     height: 30px;
     margin: 0 5px;
 }
+.button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
