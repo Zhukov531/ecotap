@@ -14,10 +14,9 @@
                 <div class="header">
                     <a href="#">
                         <img class="lang_head" src="./img/lang.svg" alt="">
-                        
                     </a>
 
-                    <a href="#">
+                    <a href="#" id="settings-icon">
                         <img class="info_head" src="./img/settings.svg" alt="">
                     </a>
                 </div>
@@ -47,7 +46,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="bottom">
@@ -69,12 +67,10 @@
                             <div class="infi2">
                                 <div class="infi2-inner">
                                     <div class="infi2-friends">
-                                        
                                         <p><img src="./img/friendsfull.svg" alt="friends">Друзья</p>
                                         <span>5</span>
                                     </div>
                                     <div class="infi2-mytrees">
-                                        
                                         <p><img src="./img/trees.svg" alt="friends">Мои деревья</p>
                                         <span>10</span>
                                     </div>
@@ -105,7 +101,27 @@
             </div>
         </div>
     </div>
-
-    <script src="./js/script.js"></script>
+    <div class="settings" id="settings-overlay" style="display: none;">
+        <div class="settings-content">
+            <div class="settings-hud">
+                <p>Настройки</p>
+                <img src="./img/close.svg" alt="" id="close-settings">
+            </div>
+            <img class="settings-logo" src="./img/logo.svg" alt="">
+            <p class="sett-text">Кошелек не привязан</p>
+            <div class="settings-btn">
+                <div class="privyazat">
+                    <p>Привязать кошелек</p>
+                </div>
+                <div class="pereschitat">
+                    <p>Пересчитать баллы и ранг </p>
+                </div>
+                <div class="obnovit">
+                    <p>Обновить профиль</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script-profile.js"></script>
 </body>
 </html>

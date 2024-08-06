@@ -1,14 +1,12 @@
-#avatar{
+#avatar {
     width: 120px;
 }
 .center-content {
-    /* background: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .center-text {
-    /* background: blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +14,6 @@
 .profile-name {
     margin-top: 28px;
     font-size: 18px;
-    /* background: green; */
 }
 
 .rating {
@@ -58,15 +55,13 @@
     background: white;
     border: 2px #63F23B solid;
 }
-.top{
+.top {
     z-index: 2;
 }
-.bottom{
+.bottom {
     z-index: 2;
-    /* height: 40vh; */
 }
-.blueblock, .bluecontent{
-
+.blueblock, .bluecontent {
     align-items: start;
 }
 
@@ -74,12 +69,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background: red; */
     color: white;
     width: 100%;
 }
 .infi1 {
-    /* background: blue; */
     display: flex;
     width: 100%;
     align-items: center;
@@ -93,7 +86,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     border-right: 1px solid grey;
 }
 .fast {
@@ -104,21 +96,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: green; */
     width: 100%;
     padding: 30px;
 }
 .infi2-inner {
-    /* background: purple; */
     width: 80%;
-
 }
-.infi2-friends p, .infi2-mytrees p{
+.infi2-friends p, .infi2-mytrees p {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.infi2-friends img, .infi2-mytrees img{
+.infi2-friends img, .infi2-mytrees img {
     margin-right: 15px;
 }
 .infi2-friends, .infi2-mytrees {
@@ -131,4 +120,55 @@
 .infi2-mytrees {
     border-top: 1px solid grey;
     border-bottom: none;
+}
+
+.settings {
+    z-index: 13;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0000006c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.settings-content {
+    background: white;
+    border: 2px solid #63F23B;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.settings-hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.settings-hud img{
+    cursor: pointer;
+}
+.settings-logo {
+    margin-top: 40px;
+}
+.sett-text {
+    margin-top: 40px;
+}
+.settings-btn {
+    margin-top: 20px;
+}
+.privyazat,
+.pereschitat,
+.obnovit {
+    border: 1px solid #63F23B;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-bottom: 25px;
+    text-align: center;
 }
