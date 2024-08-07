@@ -1,3 +1,6 @@
+body{
+    background-size: cover;
+}
 .app {
 }
 .app-content {
@@ -5,6 +8,10 @@
 .top {
 
 }
+.bottom{
+    /* background: red; */
+}
+
 .header {
 
     flex-direction: column;
@@ -36,6 +43,7 @@
     flex-direction: column;
     align-items: center;
     /* background: red; */
+
 }
 
 .daily,
@@ -45,8 +53,10 @@
     border-radius: 30px;
     margin-bottom: 15px;
     width: 300px;
+    color: black;
 }
 .dostupno{
+    color: black;
     border: 1px solid gray;
     padding: 10px 20px;
     border-radius: 30px;
@@ -54,15 +64,99 @@
 }
 .dostupno-zadaniy {
 }
-.bottom {
-}
-.blueblock {
-}
-.bluecontent {
-}
+
 .tasks-start {
+    background: #63F23B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    border-radius: 50px;
+    /* padding: 5px; */
 }
 .taski {
+    background: #292738;
+    border-radius: 50px 50px 0 0;
+    width: 100%;
+    color: white;
+    padding: 10px;
 }
 .activenost {
+    padding: 10px;
+
+}
+.activenost p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.activenost img{
+    margin-left: 10px;
+    width: 20px;
+}
+.bottom{
+    
+
+}
+.blueblock{
+    /* width: 95%; */
+    align-items: center;
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+.bluecontent{
+    /* background: green; */
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    /* padding: 10px; */
+
+}
+.line1{
+    width: 100%;
+    height: 1px;
+    background: gray;
+    margin: 10px 0;
+}
+
+.task2 {
+    background: white;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    border-radius: 50px;
+    padding: 10px 20px;
+    border: 1px solid #63F23B;
+    width: 100%;
+}
+.task-img {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.task-img img{
+    width: 60px;
+}
+.task-text p{
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.task-text img{
+    margin-left: 10px;
+}
+a{
+        text-decoration: none;
+}
+.bluecontent a{
+    width: 80%;
 }

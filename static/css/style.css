@@ -91,6 +91,10 @@ body {
 }
 
 .bottom {
+    /* height: 50vh; */
+    padding-bottom: 70px;
+}
+#index-bottom{
     height: 50vh;
 }
 
