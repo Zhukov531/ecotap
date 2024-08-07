@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/tasks.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tasks.css') }}">
 </head>
 <body>
     <div class="app">
         <div class="app-content">
             <div class="top">
                 <div class="header">
-                    <img class="ecologo" src="./img/logo.svg" alt="">
+                    <img class="ecologo" src="{{ url_for('static', filename='img/logo.svg') }}" alt="">
                     <p class="zadanja">Задания</p>
                     <span class="header-txt">После выполнения каждого задания вы будете получать токены ECO</span>
                 </div>
@@ -47,20 +47,20 @@
                     </div>
                     <div class="menu">
                         <div class="footer-blocks">
-                            <a href="/profile.html" class="footer-block_profile">
-                                <img src="./img/icons/Group 145.svg" alt="">
+                            <a href="{{ url_for('profile') }}" class="footer-block_profile">
+                                <img src="{{ url_for('static', filename='img/icons/Group 145.svg') }}" alt="">
                             </a>
-                            <a href="/friends.html" class="footer-block_friends">
-                                <img src="./img/icons/Group 146.svg" alt="">
+                            <a href="{{ url_for('friends') }}" class="footer-block_friends">
+                                <img src="{{ url_for('static', filename='img/icons/Group 146.svg') }}" alt="">
                             </a>
-                            <a href="/" class="footer-block_play">
-                                <img src="./img/icons/Group 147-1.svg" alt="">
+                            <a href="{{ url_for('index') }}" class="footer-block_play">
+                                <img src="{{ url_for('static', filename='img/icons/Group 147-1.svg') }}" alt="">
                             </a>
-                            <a href="/upgrade.html" class="footer-block_upgrade">
-                                <img src="./img/icons/Group 149.svg" alt="">
+                            <a href="{{ url_for('upgrade') }}" class="footer-block_upgrade">
+                                <img src="{{ url_for('static', filename='img/icons/Group 149.svg') }}" alt="">
                             </a>
-                            <a href="/tasks.html" class="footer-block_tasks">
-                                <img src="./img/icons/Group 148.svg" alt="">
+                            <a href="{{ url_for('tasks') }}" class="footer-block_tasks">
+                                <img src="{{ url_for('static', filename='img/icons/Group 148.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -72,9 +72,9 @@
         <div class="settings-content">
             <div class="settings-hud">
                 <p>Настройки</p>
-                <img src="./img/close.svg" alt="" id="close-settings">
+                <img src="{{ url_for('static', filename='img/close.svg') }}" alt="" id="close-settings">
             </div>
-            <img class="settings-logo" src="./img/logo.svg" alt="">
+            <img class="settings-logo" src="{{ url_for('static', filename='img/logo.svg') }}" alt="">
             <p class="sett-text">Кошелек не привязан</p>
             <div class="settings-btn">
                 <div class="privyazat">
@@ -89,6 +89,6 @@
             </div>
         </div>
     </div>
-    <script src="./js/script-profile.js"></script>
+    <script src="{{ url_for('static', filename='js/script-profile.js') }}"></script>
 </body>
 </html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    ЭКРАН С ВЫБОРОМ ЯЗЫКА
+    <div class="popup" id="languagePopup">
+        <div class="lang">
+            <div class="lang-bg"></div> <!-- Добавляем новый блок для фона -->
+            <a href="#" id="langRu"><img src="{{ url_for('static', filename='img/ru.png') }}" alt="Русский"></a>
+            <a href="#" id="langEn"><img src="{{ url_for('static', filename='img/en.png') }}" alt="English"></a>
+        </div>
+    </div>
+    
+    <!---------------------------------------------------------->
+
+    <div class="app">
+        <div class="app-content">
+            <div class="top">
+                <div class="header">
+                    <a href="#">
+                        <img class="info_head" src="{{ url_for('static', filename='img/info.svg') }}" alt="">
+                    </a>
+                    <a href="#">
+                        <div class="score">
+                            <img src="{{ url_for('static', filename='img/Trophy.svg') }}" alt="">
+                            <p>Рейтинг: </p>
+                            <p>#134</p>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <img class="lang_head" src="{{ url_for('static', filename='img/lang.svg') }}" alt="">
+                    </a>
+                </div>
+                <!-- eco сверху -->
+                <div class="ecoeco">
+                    <div class="eco1">
+                        <img src="{{ url_for('static', filename='img/resycle.svg') }}" alt="">
+                        <p>Eco: {{eco}}</p>
+                    </div>
+                    <div class="eco2">
+                        <img src="{{ url_for('static', filename='img/eco.svg') }}" alt="">
+                        <p>Eco: {{qwe}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom">
+                <div class="blueblock">
+                    <div class="bluecontent">
+                        <div class="manag-content">
+                            <div class="manag-drops">
+                                <!-- Блок для капель -->
+                                <div class="drops">
+                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop1">
+                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop2">
+                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop3">
+                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop4">
+                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop5">
+                                </div>
+                            </div>
+                            <div class="manag-btns">
+                                <div class="manag-info">
+                                    <div class="manag-timer">
+                                        <div class="timer" id="timer">00:00:00</div>
+                                    </div>
+                                    <div class="manag-text">
+                                        <p>Посадите дерево</p>
+                                    </div>
+                                </div>
+                                <button class="button" id="seedButton">
+                                    <img src="{{ url_for('static', filename='img/seed.svg') }}" alt="Семечко">
+                                </button>
+                                <button class="button" id="waterButton" style="display: none;">
+                                    <img src="{{ url_for('static', filename='img/dropbtn.svg') }}" alt="Капля">
+                                </button>
+                                <button class="button" id="transferButton" style="display: none;">
+                                    <img src="{{ url_for('static', filename='img/resycle.svg') }}" alt="Передать дерево в заповедник">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <div class="footer-blocks">
+                            <a href="{{ url_for('profile') }}" class="footer-block_profile">
+                                <img src="{{ url_for('static', filename='img/icons/Group 145.svg') }}" alt="">
+                            </a>
+                            <a href="/friends.html" class="footer-block_friends">
+                                <img src="{{ url_for('static', filename='img/icons/Group 146.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('index') }}" class="footer-block_play">
+                                <img src="{{ url_for('static', filename='img/icons/Group 147-1.svg') }}" alt="">
+                            </a>
+                            <a href="/upgrade.html" class="footer-block_upgrade">
+                                <img src="{{ url_for('static', filename='img/icons/Group 149.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('tasks') }}" class="footer-block_tasks">
+                                <img src="{{ url_for('static', filename='img/icons/Group 148.svg') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="circle-overlay">
+            <img src="{{ url_for('static', filename='img/1.svg') }}" alt="Горшок" id="mainImage">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
