@@ -154,6 +154,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+
 }
 
 .footer-blocks {
@@ -163,6 +164,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    /* Сделать тень */
 }
 
 .footer-blocks a {

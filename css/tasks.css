@@ -1,0 +1,68 @@
+.app {
+}
+.app-content {
+}
+.top {
+
+}
+.header {
+
+    flex-direction: column;
+}
+.header img{
+    width: 115px;
+}
+.ecologo{
+}
+.zadanja {
+    margin-top: 15px;
+}
+.header-txt {
+    margin-top: 25px;
+    max-width: 320px;
+    text-align: center;
+}
+.center-content {
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.center-btns {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background: red; */
+}
+
+.daily,
+.achiv {
+    border: 1px solid #63F23B;
+    padding: 10px 30px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    width: 300px;
+}
+.dostupno{
+    border: 1px solid gray;
+    padding: 10px 20px;
+    border-radius: 30px;
+    /* width: 60%; */
+}
+.dostupno-zadaniy {
+}
+.bottom {
+}
+.blueblock {
+}
+.bluecontent {
+}
+.tasks-start {
+}
+.taski {
+}
+.activenost {
+}
