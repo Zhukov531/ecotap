@@ -10,9 +10,15 @@
     <!-- ЭКРАН С ВЫБОРОМ ЯЗЫКА -->
     <div class="popup" id="languagePopup">
         <div class="lang">
-            <div class="lang-bg"></div> <!-- Добавляем новый блок для фона -->
-            <a href="#" id="langRu"><img src="{{ url_for('static', filename='img/ru.png') }}" alt="Русский"></a>
-            <a href="#" id="langEn"><img src="{{ url_for('static', filename='img/en.png') }}" alt="English"></a>
+            <div class="lang-hud">
+                <p>Поменять язык?</p>
+                <img src="{{ url_for('static', filename='img/close.svg') }}" alt="">
+            </div>
+            <p id="choose">Выберите язык <br> Choose language</p>
+            <div class="languages">
+                <a href="#" id="langRu"><img src="{{ url_for('static', filename='img/ru.svg') }}" alt="Русский">RU</a>
+                <a href="#" id="langEn"><img src="{{ url_for('static', filename='img/en.svg') }}" alt="English">EN</a>
+            </div>
         </div>
     </div>
     
@@ -25,11 +31,14 @@
                     <a href="#">
                         <img class="info_head" src="{{ url_for('static', filename='img/info.svg') }}" alt="">
                     </a>
-                    <a href="#">
+                    <a class="rait-top" href="#">
                         <div class="score">
                             <img src="{{ url_for('static', filename='img/Trophy.svg') }}" alt="">
                             <p>Рейтинг: </p>
                             <p>#134</p>
+                        </div>
+                        <div class="name-company">
+                            <p>Название компании</p>
                         </div>
                     </a>
                     <a href="#">
@@ -39,11 +48,11 @@
                 <!-- eco сверху -->
                 <div class="ecoeco">
                     <div class="eco1">
-                        <img src="{{ url_for('static', filename='img/resycle.svg') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/Ecocoin1.svg') }}" alt="">
                         <p>Eco: {{eco}}</p>
                     </div>
                     <div class="eco2">
-                        <img src="{{ url_for('static', filename='img/eco.svg') }}" alt="">
+                        <img src="{{ url_for('static', filename='img/goldmoney.svg') }}" alt="">
                         <p>Eco: {{qwe}}</p>
                     </div>
                 </div>
@@ -56,11 +65,11 @@
                             <div class="manag-drops">
                                 <!-- Блок для капель -->
                                 <div class="drops">
-                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop1">
-                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop2">
-                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop3">
-                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop4">
-                                    <img src="{{ url_for('static', filename='img/bluedrop.svg') }}" alt="Drop" class="drop" id="drop5">
+                                    <img src="{{ url_for('static', filename='img/whitedrop.svg') }}" alt="Drop" class="drop" id="drop1">
+                                    <img src="{{ url_for('static', filename='img/whitedrop.svg') }}" alt="Drop" class="drop" id="drop2">
+                                    <img src="{{ url_for('static', filename='img/whitedrop.svg') }}" alt="Drop" class="drop" id="drop3">
+                                    <img src="{{ url_for('static', filename='img/whitedrop.svg') }}" alt="Drop" class="drop" id="drop4">
+                                    <img src="{{ url_for('static', filename='img/whitedrop.svg') }}" alt="Drop" class="drop" id="drop5">
                                 </div>
                             </div>
                             <div class="manag-btns">
@@ -110,6 +119,8 @@
             <img src="{{ url_for('static', filename='img/1.svg') }}" alt="Горшок" id="mainImage">
         </div>
     </div>
+
+    
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

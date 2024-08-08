@@ -60,12 +60,21 @@ body {
 .header img {
     width: 30px;
 }
-
+.rait-top{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #292738;
+    border-radius: 20px;
+}
+.name-company{
+    color: black;
+    padding: 5px;
+}
 .score {
     display: flex;
     background: #292738;
-    border-radius: 30px;
-    padding: 10px 30px;
+    border-radius: 15px;
+    padding: 5px 30px;
     align-items: center;
 }
 
@@ -88,6 +97,7 @@ body {
 
 .eco1 img, .eco2 img {
     margin-right: 15px;
+    width: 45px;
 }
 
 .bottom {
@@ -220,25 +230,42 @@ body {
 }
 
 .lang {
-    position: relative; /* Относительное позиционирование для родительского блока */
-}
-
-.lang-bg {
     position: absolute; /* Абсолютное позиционирование для фонового блока */
     top: 50%; /* Центрирование по вертикали */
     left: 50%; /* Центрирование по горизонтали */
     transform: translate(-50%, -50%); /* Сдвиг для полного центрирования */
-    width: 280px; /* Ширина фонового блока */
-    height: 150px; /* Высота фонового блока */
-    background: #292738; /* Цвет фона */
+    background: white; /* Цвет фона */
     z-index: 1; /* Расположение позади иконок */
     border-radius: 10px; /* Закругленные углы, если нужно */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для блока */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #63F23B;
+}
+.lang-hud{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#choose{
+    margin-top: 30px;
+}
+.languages{
+    display: flex;
 }
 
 .lang a {
     position: relative; /* Относительное позиционирование для иконок */
     z-index: 2; /* Расположение перед фоновым блоком */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
 }
 
 .popup img {

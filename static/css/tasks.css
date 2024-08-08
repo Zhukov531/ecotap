@@ -160,3 +160,53 @@ a{
 .bluecontent a{
     width: 80%;
 }
+
+.daily-quests{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000085;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dq-content{
+    background: white;
+    width: 80%;
+    padding: 30px;
+    border-radius: 30px;
+    border: 1px solid #63F23B;
+}
+
+.dq-hud {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.dq-btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.dq-btn-complete, .dq-btn-ready, .dq-btn {
+    width: 50px;
+    height: 50px;
+    background: #63F23B;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dq-btn-ready{
+
+}
+.dq-btn{
+    
+}

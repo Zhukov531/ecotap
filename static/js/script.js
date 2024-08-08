@@ -23,18 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Массив изображений для различных стадий дерева
     const treeStages = [
-        './img/2.svg',
-        './img/3.svg',
-        './img/4.svg',
-        './img/5.svg',
-        './img/6.svg'
+        '/static/img/2.svg',
+        '/static/img/3.svg',
+        '/static/img/4.svg',
+        '/static/img/5.svg',
+        '/static/img/6.svg'
     ];
 
     // Обработчик клика по кнопке семечка
     seedButton.addEventListener('click', function () {
         if (!timer && currentStage < treeStages.length) {
             mainImage.src = treeStages[currentStage]; // Меняем основное изображение на следующее
-            drops[currentDrop].src = './img/bluedrop.svg'; // Меняем изображение капли на заполненное
+            drops[currentDrop].src = '/static/img/bluedrop.svg'; // Меняем изображение капли на заполненное
             currentDrop++;
             currentStage++;
             seedButton.style.display = 'none'; // Скрыть кнопку семечка
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     waterButton.addEventListener('click', function () {
         if (!timer && currentStage < treeStages.length) {
             mainImage.src = treeStages[currentStage]; // Обновляем изображение дерева
-            drops[currentDrop].src = './img/bluedrop.svg'; // Меняем изображение капли на заполненное
+            drops[currentDrop].src = '/static/img/bluedrop.svg'; // Меняем изображение капли на заполненное
             currentDrop++;
             currentStage++;
             if (currentDrop >= drops.length) {
@@ -57,6 +57,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 startTimer();
             }
         }
+    });
+
+    // Обработчик клика по кнопке recycle
+    transferButton.addEventListener('click', function () {
+        // Сброс переменных и элементов интерфейса
+        currentDrop = 0;
+        currentStage = 0;
+        mainImage.src = '/static/img/1.svg'; // Возвращаем основное изображение на первую стадию
+        seedButton.style.display = 'block'; // Показываем кнопку семечка
+        waterButton.style.display = 'none'; // Скрываем кнопку воды
+        transferButton.style.display = 'none'; // Скрываем кнопку recycle
+        drops.forEach(drop => drop.src = '/static/img/whitedrop.svg'); // Сбрасываем изображения капель
+        // Добавление токенов eco
+        let ecoElement = document.getElementById('eco'); // Получаем элемент с количеством токенов ECO
+        let currentEco = parseInt(ecoElement.textContent); // Получаем текущее количество токенов ECO
+        let newEco = currentEco + 100; // Добавляем 100 токенов ECO
+        ecoElement.textContent = newEco; // Обновляем текст с количеством токенов ECO
     });
 
     // Функция запуска таймера
