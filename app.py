@@ -1,26 +1,36 @@
-from flask import Flask, render_template
+from typing import Union
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
-app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html', qwe = 123, eco=11)
 
-@app.route('/profile')
-def profile():
-    return render_template('profile.html')
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templ = Jinja2Templates(directory="templates")
 
-@app.route('/tasks')
-def tasks():
-    return render_template('tasks.html')
 
-@app.route('/friends')
-def friends():
-    return render_template('friends.html')
+# самое начало
+@app.get("/", name='index')
+def root(request: Request):
+    return templ.TemplateResponse('index.html', context={'request': request})
 
-@app.route('/upgrade')
-def upgrade():
-    return render_template('upgrade.html')
+# профиль
+@app.get("/profile", name='profile')
+def get_profile(request: Request):
+    return templ.TemplateResponse('profile.html', context={'request': request})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+@app.get("/tasks", name='tasks')
+def get_tasks(request: Request):
+    return {"item_id": item_id, "q": q}
+
+
+@app.get("/friends", name='friends')
+def get_friend(request: Request):
+    return {"item_id": item_id, "q": q}
+
+@app.get("/upgrade", name='upgrade')
+def get_upgrade(request: Request):
+    return {"item_id": item_id, "q": q}
