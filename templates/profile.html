@@ -129,31 +129,34 @@
     <script src="https://webappcontent.telegram.org/js/jquery.min.js"></script>
     <script>
         Telegram.WebApp.ready();
-        var tg = Telegram.WebApp.initDataUnsafe || 0;
+        var tg = Telegram.WebApp.initDataUnsafe || {};
 
-        $.ajax({
-            url: '/user-data-profile',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                user_id: tg.user.id
-            }),
-            success: function(response) {
-                if (response.success) {
-                    document.getElementById('ecoAmount').textContent = response.eco;
-                    document.getElementById('ecoAmount2').textContent = response.jeton;
-                    document.getElementById('complet_task').textContent = response.complet_task;
-                    document.getElementById('names').textContent = tg.user.username;
+        if (tg.user && tg.user.id && tg.user.username) {
+            $.ajax({
+                url: '/user-data-profile',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    user_id: tg.user.id
+                }),
+                success: function(response) {
+                    if (response.success) {
+                        document.getElementById('ecoAmount').textContent = response.eco;
+                        document.getElementById('complet_task').textContent = response.complet_task;
+                        document.getElementById('names').textContent = tg.user.username;
 
-                    console.log('Данные Telegram успешно проверены и обновлены');
-                } else {
-                    console.log('Ошибка при проверке данных Telegram');
+                        console.log('Данные Telegram успешно проверены и обновлены');
+                    } else {
+                        console.log('Ошибка при проверке данных Telegram');
+                    }
+                },
+                error: function() {
+                    console.log('Ошибка при отправке данных на сервер');
                 }
-            },
-            error: function() {
-                console.log('Ошибка при отправке данных на сервер');
-            }
-        });
-    </script>
+            });
+        } else {
+            console.log('Ошибка: не удалось получить данные пользователя из Telegram.');
+        }
+        </script>
 </body>
 </html>
