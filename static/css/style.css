@@ -267,7 +267,9 @@ body {
     text-decoration: none;
     color: black;
 }
-
+.popup{
+    display: none;
+}
 .popup img {
     margin: 0 15px;
 }

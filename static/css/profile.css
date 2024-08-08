@@ -47,6 +47,16 @@
     width: 80vw;
 }
 .eco-active-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.eco-active-text img{
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
 }
 .eco-active-counter {
 }
