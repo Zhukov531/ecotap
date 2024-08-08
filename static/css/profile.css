@@ -1,3 +1,6 @@
+body{
+    overflow: visible;
+}
 #avatar {
     width: 120px;
 }

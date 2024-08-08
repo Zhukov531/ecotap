@@ -209,8 +209,8 @@ body {
 }
 
 .circle-overlay img {
-    width: 200px; /* Подгоните размер по необходимости */
-    height: 200px;
+    width: 250px; /* Подгоните размер по необходимости */
+    height: 250px;
     /* border-radius: 50%; */
 }
 
