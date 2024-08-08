@@ -210,7 +210,7 @@ body {
 .circle-overlay img {
     width: 200px; /* Подгоните размер по необходимости */
     height: 200px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 
 .popup {

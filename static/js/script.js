@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let transferButton = document.getElementById('transferButton');
     let mainImage = document.getElementById('mainImage');
     let drops = document.querySelectorAll('.drop');
-    let currentDrop = 0; // Убедимся, что индекс капли начинается с 0
+    let currentDrop = 0;
     let currentStage = 0;
     let timer;
 
@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
         '/static/img/3.svg',
         '/static/img/4.svg',
         '/static/img/5.svg',
-        '/static/img/6.svg'
+        '/static/img/6.svg',
+        '/static/img/7.svg'
     ];
 
     // Обработчик клика по кнопке семечка
@@ -46,13 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
     waterButton.addEventListener('click', function () {
         if (!timer && currentStage < treeStages.length) {
             mainImage.src = treeStages[currentStage]; // Обновляем изображение дерева
-            drops[currentDrop].src = '/static/img/bluedrop.svg'; // Меняем изображение текущей капли на синюю
+            drops[currentDrop].src = '/static/img/bluedrop.svg';
             currentDrop++;
             currentStage++;
-            if (currentDrop >= drops.length) {
+            if (currentStage >= treeStages.length) {
                 waterButton.style.display = 'none'; // Скрыть кнопку капли
                 transferButton.style.display = 'block'; // Показать кнопку передачи
                 document.querySelector('.manag-text p').textContent = 'Отправьте дерево в заповедник';
+                timerElement.textContent = 'Дерево выросло'; // Обновляем текст таймера
             } else {
                 document.querySelector('.manag-text p').textContent = 'До следующего полива';
                 startTimer();
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Обработчик клика по кнопке передачи дерева
+    // Обработчик клика по кнопке recycle
     transferButton.addEventListener('click', function () {
         // Сброс переменных и элементов интерфейса
         currentDrop = 0;
@@ -68,10 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         mainImage.src = '/static/img/1.svg'; // Возвращаем основное изображение на первую стадию
         seedButton.style.display = 'block'; // Показываем кнопку семечка
         waterButton.style.display = 'none'; // Скрываем кнопку воды
-        transferButton.style.display = 'none'; // Скрываем кнопку передачи
-        drops.forEach(drop => drop.src = '/static/img/whitedrop.svg'); // Возвращаем все капли в исходное состояние
+        transferButton.style.display = 'none'; // Скрываем кнопку recycle
+        drops.forEach(drop => drop.src = '/static/img/whitedrop.svg');
         document.querySelector('.manag-text p').textContent = 'Посадите дерево';
-        document.getElementById('timer').textContent = 'Дерево выросло';
+        timerElement.textContent = '00:00:00'; // Сбрасываем текст таймера
+
         // Добавление токенов eco
         let ecoElement = document.getElementById('eco'); // Получаем элемент с количеством токенов ECO
         let currentEco = parseInt(ecoElement.textContent); // Получаем текущее количество токенов ECO
