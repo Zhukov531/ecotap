@@ -123,5 +123,34 @@
     
 
     <script src="{{ url_for('static', path='js/script.js') }}"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://webappcontent.telegram.org/js/jquery.min.js"></script>
+    <script>
+        Telegram.WebApp.ready();
+        var tg = Telegram.WebApp.initDataUnsafe || 0;
+    
+        $.ajax({
+            url: '/user-data',  // Используем маршрут, который мы создадим на сервере для обработки POST-запроса
+            type: 'POST',
+            contentType: 'application/json',  // Обязательно указываем формат данных
+            data: JSON.stringify({
+                user_id: tg
+            }),
+            success: function(response) {
+                if (response.success) {
+                    // Обновление страницы
+                    console.log('Данные Telegram успешно проверены и обновлены');
+                    location.reload();
+                } else {
+                    // Обработка ошибки
+                    console.log('Ошибка при проверке данных Telegram');
+                }
+            },
+            error: function() {
+                // Обработка ошибки
+                console.log('Ошибка при отправке данных на сервер');
+            }
+        });
+    </script>
 </body>
 </html>

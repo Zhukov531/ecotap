@@ -34,3 +34,16 @@ def get_friend(request: Request):
 @app.get("/upgrade", name='upgrade')
 def get_upgrade(request: Request):
     return {"item_id": item_id, "q": q}
+
+@app.post("/user-data")
+async def handle_user_data(request: Request):
+    data = await request.json()
+    user_id = data.get('user_id')
+    
+    # Здесь можно добавить логику для обработки данных, например запрос в базу данных
+    # Например:
+    if user_id:
+        # Пример ответа, можно заменить на реальную логику
+        return JSONResponse(content={"success": True}, status_code=200)
+    else:
+        return JSONResponse(content={"success": False}, status_code=400)
