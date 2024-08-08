@@ -23,15 +23,15 @@
                 <div class="center-content">
                     <div class="center-text">
                          <img src="{{ url_for('static', path='img/ava.png') }}" alt="" id="avatar">
-                         <p class="profile-name">Имя профиля</p>
+                         <p class="profile-name"><span id="names">name</span></p>
                          <div class="rating">
                             <img src="{{ url_for('static', path='img/trophyblack.svg') }}" alt="">
                             <p class="rating-p">Rating: </p>
-                            <p>#156</p>
+                            <p>#15</p>
                          </div>
                          <div class="balance">
                             <img src="{{ url_for('static', path='img/Ecocoin1.svg') }}" alt="">
-                            <p>1 200 986</p>
+                            <p><span id="ecoAmount">0</span></p>
                          </div>
                          <p class="podpis">Баланс</p>
                     </div>
@@ -40,11 +40,11 @@
                             <p class="eco-active-text">
                                 <img src="{{ url_for('static', path='img/goldmoney.svg') }}" alt="">Эко-активности
                             </p>
-                            <p class="eco-active-counter">5</p>
+                            <p class="eco-active-counter">0</p>
                         </div>
                         <div class="tasks-complete">
                             <p class="eco-active-text">Выполнено заданий</p>
-                            <p class="eco-active-counter">10</p>
+                            <p class="eco-active-counter"><span id="complet_task">0</span></p>
                         </div>
                     </div>
                 </div>
@@ -125,5 +125,35 @@
         </div>
     </div>
     <script src="{{ url_for('static', path='js/script-profile.js') }}"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://webappcontent.telegram.org/js/jquery.min.js"></script>
+    <script>
+        Telegram.WebApp.ready();
+        var tg = Telegram.WebApp.initDataUnsafe || 0;
+
+        $.ajax({
+            url: '/user-data-profile',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                user_id: tg.user.id
+            }),
+            success: function(response) {
+                if (response.success) {
+                    document.getElementById('ecoAmount').textContent = response.eco;
+                    document.getElementById('ecoAmount2').textContent = response.jeton;
+                    document.getElementById('complet_task').textContent = response.complet_task;
+                    document.getElementById('names').textContent = tg.user.username;
+
+                    console.log('Данные Telegram успешно проверены и обновлены');
+                } else {
+                    console.log('Ошибка при проверке данных Telegram');
+                }
+            },
+            error: function() {
+                console.log('Ошибка при отправке данных на сервер');
+            }
+        });
+    </script>
 </body>
 </html>

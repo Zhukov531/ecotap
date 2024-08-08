@@ -80,3 +80,28 @@ timer - время последнего полив
         'timer': 0 }, status_code=200)
     else:
         return JSONResponse(content={"success": False}, status_code=400)
+
+
+@app.post("/user-data-profile")
+async def handle_user_profile(request: Request):
+    data = await request.json()
+    user_id = data.get('user_id')
+
+    user = await User.get(user_id=user_id)
+    count = await Task_User.filter(user_id=user_id).count()
+    """профиль
+rating - место в рейтинге
+eco - кол-во токенов
+jeton - кол-во жетонов
+complet_task - кол-во выполненных задач"""
+  
+    if user_id:
+        # Пример ответа, можно заменить на реальную логику
+        return JSONResponse(content={"success": True,
+        'rating': 1,
+        'eco': user.balance,
+        'jeton': 0,
+        'complet_task': count,
+        }, status_code=200)
+    else:
+        return JSONResponse(content={"success": False}, status_code=400)
