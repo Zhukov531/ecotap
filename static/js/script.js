@@ -74,7 +74,30 @@ document.addEventListener('DOMContentLoaded', function () {
         drops.forEach(drop => drop.src = '/static/img/whitedrop.svg');
         document.querySelector('.manag-text p').textContent = 'Посадите дерево';
         timerElement.textContent = '00:00:00'; // Сбрасываем текст таймера
+        $.ajax({
+            url: '/add-eco',  // Замените на правильный URL вашего эндпоинта
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                user_id: tg.user.id,  // Подставляем user_id пользователя
+                amount: 1000  // Указываем количество эконов для пополнения
+            }),
+            success: function(response) {
+                if (response.success) {
+                    // Обновляем баланс эконов на странице
+                    document.getElementById('ecoAmount').textContent = response.new_balance;
 
+                    // Если нужно, перезагрузите данные страницы (не обязательно перезагружать всю страницу)
+                    // Например, обновите другие элементы, если нужно
+                    console.log('Баланс успешно обновлён');
+                } else {
+                    console.log('Ошибка при пополнении эконов');
+                }
+            },
+            error: function() {
+                console.log('Ошибка при отправке запроса на сервер');
+            }
+        });
         // Добавление токенов eco
         let ecoElement = document.getElementById('eco'); // Получаем элемент с количеством токенов ECO
         let currentEco = parseInt(ecoElement.textContent); // Получаем текущее количество токенов ECO

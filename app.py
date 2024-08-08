@@ -105,3 +105,17 @@ complet_task - кол-во выполненных задач"""
         }, status_code=200)
     else:
         return JSONResponse(content={"success": False}, status_code=400)
+
+
+@app.post("/add-eco")
+async def add_eco(request: Request):
+    data = await request.json()
+    user_id = data.get('user_id')
+    amount = data.get('amount')
+
+    # Найдите пользователя по user_id и добавьте эконы к балансу
+    user = await User.get(user_id=user_id)
+    user.balance += amount
+    await user.save()
+
+    return JSONResponse(content={"success": True, "new_balance": user.balance}, status_code=200)
