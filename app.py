@@ -4,7 +4,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from tortoise.contrib.fastapi import register_tortoise
-
+from db import *
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")

@@ -134,7 +134,7 @@
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
-                user_id: tg
+                user_id: tg.user.id
             }),
             success: function(response) {
                 if (response.success) {
