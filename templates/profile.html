@@ -22,7 +22,8 @@
                 </div>
                 <div class="center-content">
                     <div class="center-text">
-                         <img src="{{ url_for('static', path='img/ava.png') }}" alt="" id="avatar">
+                        <img src="{{ url_for('static', path='img/ava.png') }}" alt="" id="avatar">
+
                          <p class="profile-name"><span id="names">name</span></p>
                          <div class="rating">
                             <img src="{{ url_for('static', path='img/trophyblack.svg') }}" alt="">
@@ -132,31 +133,36 @@
         var tg = Telegram.WebApp.initDataUnsafe || {};
 
         if (tg.user && tg.user.id && tg.user.username) {
-            $.ajax({
-                url: '/user-data-profile',
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    user_id: tg.user.id
-                }),
-                success: function(response) {
-                    if (response.success) {
-                        document.getElementById('ecoAmount').textContent = response.eco;
-                        document.getElementById('complet_task').textContent = response.complet_task;
-                        document.getElementById('names').textContent = tg.user.username;
+    // Устанавливаем аватар пользователя
+    if (tg.user.photo_url) {
+        document.getElementById('avatar').src = tg.user.photo_url;
+    }
 
-                        console.log('Данные Telegram успешно проверены и обновлены');
-                    } else {
-                        console.log('Ошибка при проверке данных Telegram');
-                    }
-                },
-                error: function() {
-                    console.log('Ошибка при отправке данных на сервер');
-                }
-            });
-        } else {
-            console.log('Ошибка: не удалось получить данные пользователя из Telegram.');
+    $.ajax({
+        url: '/user-data-profile',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            user_id: tg.user.id
+        }),
+        success: function(response) {
+            if (response.success) {
+                document.getElementById('ecoAmount').textContent = response.eco;
+                document.getElementById('complet_task').textContent = response.complet_task;
+                document.getElementById('names').textContent = tg.user.username;
+
+                console.log('Данные Telegram успешно проверены и обновлены');
+            } else {
+                console.log('Ошибка при проверке данных Telegram');
+            }
+        },
+        error: function() {
+            console.log('Ошибка при отправке данных на сервер');
         }
+    });
+} else {
+    console.log('Ошибка: не удалось получить данные пользователя из Telegram.');
+}
         </script>
 </body>
 </html>
