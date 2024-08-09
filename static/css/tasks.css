@@ -190,8 +190,8 @@ a{
     align-items: center;
     justify-content: center;
     background: white;
-    width: 80%;
-    padding: 30px;
+    width: 90%;
+    padding: 20px;
     border-radius: 30px;
     border: 1px solid #63F23B;
     text-align: center;
@@ -211,6 +211,7 @@ a{
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    color: black;
 }
 .dq-btn-complete, .dq-btn-ready, .dq-btn, .dq-baff {
     width: 50px;
@@ -223,17 +224,59 @@ a{
     justify-content: center;
     padding: 30px;
     margin: 5px;
+    color: black;
 }
 .dq-btn-ready{
     background: white;
     border: 2px solid #63F23B;
+    color: black;
 
 }
 .dq-btn, .dq-baff{
     background: white;
     border: 1px solid gray;
-    
+
+}
+.dq-btn span{
+    font-size: 12px;
 }
 .dq-baff{
     font-size: 12px;
+}
+
+/* Скрываем daily-quests по умолчанию */
+.hidden {
+    display: none;
+}
+
+/* Стиль для daily-quests */
+.daily-quests {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Стиль для содержимого daily-quests */
+.dq-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+/* Стиль для крестика (кнопки закрытия) */
+.close-tasks-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
 }
