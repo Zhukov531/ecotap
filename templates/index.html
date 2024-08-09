@@ -41,6 +41,83 @@
                             <p>Название компании</p>
                         </div>
                     </a>
+
+                        <div class="overlay-guide" id="overlayGuide">
+    <div class="guide-slide" id="slide1">
+        <div class="preview-content">
+            <div class="preview-hud">
+                <img src="{{ url_for('static', path='img/lang.svg') }}" alt="lang-logo">
+            </div>
+            <div class="step-progress">
+                <p id="stepText">Step 1 of 3</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 33%;"></div>
+                </div>
+            </div>
+            <div class="preview-text">
+                <h1>Welcome to the First Phase
+                of the ECO PROJECT</h1>
+                <p>Introducing the $ECO token!</p>
+                <p>ECO represents your time and effort.The token developed by the ECO PROJECT company rewards every productive second spent for the benefit of our planet’s ecology.</p>
+            </div>
+            <img src="{{ url_for('static', path='img/logo.svg') }}" alt="eco-logo">
+            <div class="preview-btn">
+                <button class="next-btn" onclick="showNextSlide(2)">Далее</button>
+            </div>
+        </div>
+    </div>
+    <div class="guide-slide" id="slide2">
+        <div class="preview-content">
+            <div class="preview-hud">
+                <img src="{{ url_for('static', path='img/lang.svg') }}" alt="lang-logo">
+            </div>
+            <div class="step-progress">
+                <p id="stepText">Step 2 of 3</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 66%;"></div>
+                </div>
+            </div>
+            <div class="preview-text">
+                <h1>STAY WITH ECO!</h1>
+                <p>Earn tokens every 12 hours by watering
+your tree or completing tasks
+to maximize your rewards.</p>
+                
+            </div>
+            <img src="{{ url_for('static', path='img/bags.svg') }}" alt="eco-logo">
+            <div class="preview-btn">
+                <button class="next-btn" onclick="showNextSlide(3)">Далее</button>
+            </div>
+        </div>
+    </div>
+    <div class="guide-slide" id="slide3">
+        <div class="preview-content">
+            <div class="preview-hud">
+                <img src="{{ url_for('static', path='img/lang.svg') }}" alt="lang-logo">
+            </div>
+            <div class="step-progress">
+                <p id="stepText">Step 3 of 3</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="preview-text">
+                <h1>MULTIPLY YOUR PROFITS!</h1>
+                <p>The more you play, the bigger your profit!
+For every tree transplanted to the reserve,
+you get a multiplier to the subsequent profit.
+You can also be eco-active
+and recieve special rewards! </p>
+            </div>
+            <img src="{{ url_for('static', path='img/listiki.svg') }}" alt="eco-logo">
+            <div class="preview-btn">
+                <button class="close-btn" onclick="closeGuide()">Начать игру</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
                     <a href="#">
                         <img class="lang_head" src="{{ url_for('static', path='img/lang.svg') }}" alt="">
                     </a>

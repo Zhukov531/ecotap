@@ -144,3 +144,46 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
+// Функция для отображения следующего слайда
+function showNextSlide(slideNumber) {
+    // Скрыть все слайды
+    const slides = document.querySelectorAll('.guide-slide');
+    slides.forEach(slide => {
+        slide.style.display = 'none';
+    });
+
+    // Показать слайд с указанным номером
+    const currentSlide = document.getElementById('slide' + slideNumber);
+    currentSlide.style.display = 'block';
+}
+
+// Функция для закрытия гида
+function closeGuide() {
+    const overlay = document.getElementById('overlayGuide');
+    overlay.style.display = 'none';
+}
+
+// Инициализация первого слайда
+document.addEventListener('DOMContentLoaded', function() {
+    showNextSlide(1);
+});
+function showNextSlide(slideNumber) {
+    // Скрываем все слайды
+    var slides = document.querySelectorAll('.guide-slide');
+    slides.forEach(function(slide) {
+        slide.style.display = 'none';
+    });
+
+    // Показываем текущий слайд
+    var currentSlide = document.getElementById('slide' + slideNumber);
+    currentSlide.style.display = 'block';
+
+    // Обновляем текст шага
+    var totalSlides = slides.length;
+    var stepText = document.getElementById('stepText');
+    stepText.textContent = 'Step ' + slideNumber + ' of ' + totalSlides;
+}
+
+function closeGuide() {
+    document.getElementById('overlayGuide').style.display = 'none';
+}

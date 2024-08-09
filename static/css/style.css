@@ -300,3 +300,102 @@ body {
 .pustoidiv{
     min-height: 50%;
 }
+/* НАЧАЛЬНЫЙ ГАЙД */
+
+.overlay-guide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.guide-slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.preview-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+
+.preview-content img {
+    width: 100%;
+    height: auto;
+}
+.preview-hud{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.preview-hud img{
+    width: 35px;
+}
+.step-progress{
+    width: 100%;
+}
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #63F23B;
+}
+
+.preview-text h1 {
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+.preview-text p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.preview-btn {
+    margin-top: 20px;
+}
+
+.next-btn,
+.close-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #63F23B;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.next-btn:hover,
+.close-btn:hover {
+    background-color: #4CAF50;
+}
+
+/* Показываем первый слайд по умолчанию */
+#slide1 {
+    display: block;
+}
