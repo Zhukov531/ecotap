@@ -1,5 +1,15 @@
+@font-face {
+    font-family: 'NoirPro-Regular';
+    src: url('../fonts/noirpro-regular.eot'); /* IE 9 Compatibility Mode */
+    src: url('../fonts/noirpro-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+        url('../fonts/noirpro-regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../fonts/noirpro-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+        url('../fonts/noirpro-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('../fonts/noirpro-regular.svg#noirpro-regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
 body{
     background-size: cover;
+    overflow: auto;
 }
 .app {
 }
@@ -175,14 +185,22 @@ a{
     justify-content: center;
 }
 .dq-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: white;
     width: 80%;
     padding: 30px;
     border-radius: 30px;
     border: 1px solid #63F23B;
+    text-align: center;
 }
-
+.dq-content p{
+    margin: 10px 0;
+}
 .dq-hud {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -194,7 +212,7 @@ a{
     flex-wrap: wrap;
     align-items: center;
 }
-.dq-btn-complete, .dq-btn-ready, .dq-btn {
+.dq-btn-complete, .dq-btn-ready, .dq-btn, .dq-baff {
     width: 50px;
     height: 50px;
     background: #63F23B;
@@ -203,10 +221,19 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
+    margin: 5px;
 }
 .dq-btn-ready{
+    background: white;
+    border: 2px solid #63F23B;
 
 }
-.dq-btn{
+.dq-btn, .dq-baff{
+    background: white;
+    border: 1px solid gray;
     
+}
+.dq-baff{
+    font-size: 12px;
 }

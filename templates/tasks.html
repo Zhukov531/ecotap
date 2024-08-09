@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/tasks.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/tasks.css') }}">
 </head>
 <body>
     <div class="app">
         <div class="app-content">
             <div class="top">
                 <div class="header">
-                    <img class="ecologo" src="{{ url_for('static', filename='img/logo.svg') }}" alt="">
+                    <img class="ecologo" src="{{ url_for('static', path='img/logo.svg') }}" alt="">
                     <p class="zadanja">Задания</p>
                     <span class="header-txt">После выполнения каждого задания вы будете получать токены ECO</span>
                 </div>
@@ -139,19 +139,19 @@
                     <div class="menu">
                         <div class="footer-blocks">
                             <a href="{{ url_for('profile') }}" class="footer-block_profile">
-                                <img src="{{ url_for('static', filename='img/icons/Group 145.svg') }}" alt="">
+                                <img src="{{ url_for('static', path='img/icons/Group 145.svg') }}" alt="">
                             </a>
                             <a href="{{ url_for('friends') }}" class="footer-block_friends">
-                                <img src="{{ url_for('static', filename='img/icons/Group 146.svg') }}" alt="">
+                                <img src="{{ url_for('static', path='img/icons/Group 146.svg') }}" alt="">
                             </a>
                             <a href="{{ url_for('index') }}" class="footer-block_play">
-                                <img src="{{ url_for('static', filename='img/icons/Group 147.svg') }}" alt="">
+                                <img src="{{ url_for('static', path='img/icons/Group 147.svg') }}" alt="">
                             </a>
                             <a href="{{ url_for('upgrade') }}" class="footer-block_upgrade">
-                                <img src="{{ url_for('static', filename='img/icons/Group 149.svg') }}" alt="">
+                                <img src="{{ url_for('static', path='img/icons/Group 149.svg') }}" alt="">
                             </a>
                             <a href="{{ url_for('tasks') }}" class="footer-block_tasks">
-                                <img src="{{ url_for('static', filename='img/icons/Group 148-1.svg') }}" alt="">
+                                <img src="{{ url_for('static', path='img/icons/Group 148-1.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -164,40 +164,47 @@
         <div class="dq-content">
             <div class="dq-hud">
                 <p>Ежедневные задания</p>
-                <img src="{{ url_for('static', filename='img/close.svg') }}" alt="" id="close-settings">
+                <img src="{{ url_for('static', path='img/close.svg') }}" alt="" id="close-settings">
             </div>
             <p>Добавь $ECO в имя профиля
                 и Заходи каждый день в игру
                 чтобы забрать ежденевную награду</p>
             <div class="dq-btns">
+
+                <!-- ЗАБРАННОЕ ВОЗНАГРАЖДЕНИЕ -->
                 <div class="dq-btn-complete">
                     <img src="/static/img/Ecocoin1.svg" alt="">
                     <span>500</span>
                 </div>
+                <!-- МОЖНО ЗАБРАТЬ -->
                 <div class="dq-btn-ready">
-                    <img src="/static/img/Ecocoin1.svg" alt="">
-                    <span>500</span>
+                    <img src="/static/img/ecocoin2.svg" alt="">
+                    <span>750</span>
                 </div>
-                <div class="dq-btn">
-                    <img src="/static/img/Ecocoin1.svg" alt="">
-                    <span>500</span>
+                <!-- БАФФ> -->
+                <div class="dq-baff">
+                    <!-- <img src="/static/img/Ecocoin1.svg" alt=""> -->
+                    <span>+5%</span>
+                    <span>к прибыли</span>
                 </div>
-                <div class="dq-btn">
-                    <img src="/static/img/Ecocoin1.svg" alt="">
-                    <span>500</span>
-                </div>
-                <div class="dq-btn">
-                    <img src="/static/img/Ecocoin1.svg" alt="">
-                    <span>500</span>
-                </div>
-                <div class="dq-btn">
-                    <img src="/static/img/Ecocoin1.svg" alt="">
-                    <span>500</span>
-                </div>
+                <!-- СЛЕДУЮЩАЯ НАГРАДА -->
+                <a href="">
+                    <div class="dq-btn">
+                        <img src="/static/img/ecocoin3.svg" alt="">
+                        <span>1.000</span>
+                    </div>
+                </a>
+                <!-- СЛЕДУЮЩАЯ НАГРАДА -->
+                <a href="">
+                    <div class="dq-btn">
+                        <img src="/static/img/ecocoins.svg" alt="">
+                        <span>1.500</span>
+                    </div>
+                </a>
             </div>
         </div>
     </div> -->
 
-    <script src="{{ url_for('static', filename='js/script-profile.js') }}"></script>
+    <script src="{{ url_for('static', path='js/script-profile.js') }}"></script>
 </body>
 </html>

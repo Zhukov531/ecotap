@@ -43,16 +43,16 @@ async def get_profile(request: Request):
 
 @app.get("/tasks", name='tasks')
 def get_tasks(request: Request):
-    return {"item_id": item_id, "q": q}
+    return templ.TemplateResponse('tasks.html', context={'request': request})
 
 
 @app.get("/friends", name='friends')
 def get_friend(request: Request):
-    return {"item_id": item_id, "q": q}
+    return templ.TemplateResponse('friends.html', context={'request': request})
 
 @app.get("/upgrade", name='upgrade')
 def get_upgrade(request: Request):
-    return {"item_id": item_id, "q": q}
+    return templ.TemplateResponse('upgrade.html', context={'request': request})
 
 @app.post("/user-data")
 async def handle_user_data(request: Request):
