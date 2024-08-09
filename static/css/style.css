@@ -446,3 +446,125 @@ body {
     border: none;
     cursor: pointer;
 }
+
+
+/* СТАТИСТИКА КОМПАНИЙ */
+
+.stata {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.stata-content {
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stata-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.bluelist-content {
+    margin-top: 20px;
+    text-align: left;
+}
+.top-comp-users {
+    margin-top: 20px;
+    display: flex;
+    border: 1px solid #63F23B;
+    border-radius: 30px;
+    align-items: center;
+    /* justify-content: space-around; */
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 20px;
+    padding: 15px 0px;
+}
+.top-company {
+    padding: 20px;
+    width: 50%;
+}
+.top-users{
+    background: #63F23B;
+    color: white;
+    padding: 20px;
+    width: 50%;
+}
+.top-polz-text{
+    margin-bottom: 30px;
+}
+.position {
+
+    border: 1px solid #51D5F4;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+}
+.dohod {
+    border: 1px solid #51D5F4;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+}
+.dohod p{
+    display: flex;
+    align-items: center;
+}
+.dohod img{
+    margin-left: 15px;
+}
+.bluelist {
+    background: #292738;
+    width: 95%;
+    border-radius: 50px 50px 0 0 ;
+    height: 100%;
+    margin: 0;
+}
+.bluelist-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.playerone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    width: 90%;
+    border-radius: 30px;
+    padding: 15px 30px;
+    border: 1px solid #FEDD03;
+}
+.player-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background: #FEDD03;
+}
+.player-name {
+}
+.player-wallet {
+    display: flex;
+    align-items: center;
+}

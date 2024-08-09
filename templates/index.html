@@ -40,6 +40,55 @@
             </ul>
         </div>
     </div>
+    </div>
+
+<div class="stata" id="stataOverlay" style="display: none;">
+    <div class="stata-content">
+        <img src="{{ url_for('static', path='img/logo.svg') }}" alt="logo.svg">
+        <div class="top-comp-users">
+            <div class="top-company">
+                <p>Топ компаний</p>
+            </div>
+            <div class="top-users">
+                <p>Топ пользователей</p>
+            </div>
+        </div>
+        <p class="top-polz-text">Топ пользователей (без учета дохода друзей)</p>
+        <div class="position">
+            <p>Ваша позиция: 777</p>
+        </div>
+        <div class="dohod">
+            <p>Ваш доход: 555666 <img src="{{ url_for('static', path='img/Ecocoin1.svg') }}" alt="Ecocoin.svg"></p>
+        </div>
+        <div class="bluelist">
+            <div class="bluelist-content">
+                <div class="playerone">
+                    <div class="player-num">1</div>
+                    <div class="player-name">Имя игрока</div>
+                    <div class="player-wallet">1.000.000 <img src="{{ url_for('static', path='img/Ecocoin1.svg') }}" alt="Ecocoin.svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+                        <div class="footer-blocks">
+                            <a href="{{ url_for('profile') }}" class="footer-block_profile">
+                                <img src="{{ url_for('static', path='img/icons/Group 145.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('friends') }}" class="footer-block_friends">
+                                <img src="{{ url_for('static', path='img/icons/Group 146.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('index') }}" class="footer-block_play">
+                                <img src="{{ url_for('static', path='img/icons/Group 147-1.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('upgrade') }}" class="footer-block_upgrade">
+                                <img src="{{ url_for('static', path='img/icons/Group 149.svg') }}" alt="">
+                            </a>
+                            <a href="{{ url_for('tasks') }}" class="footer-block_tasks">
+                                <img src="{{ url_for('static', path='img/icons/Group 148.svg') }}" alt="">
+                            </a>
+                        </div>
+                    </div>
 </div>
 
     <!---------------------------------------------------------->
@@ -62,7 +111,7 @@
                         </div>
                     </a>
 
-                        <div class="overlay-guide" id="overlayGuide">
+                        <!-- <div class="overlay-guide" id="overlayGuide">
     <div class="guide-slide" id="slide1">
         <div class="preview-content">
             <div class="preview-hud">
@@ -135,7 +184,7 @@ and recieve special rewards! </p>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
                     <a href="#">

@@ -200,3 +200,14 @@ document.getElementById('infoOverlay').addEventListener('click', function(event)
         document.getElementById('infoOverlay').style.display = 'none';
     }
 });
+document.querySelector('.rait-top').addEventListener('click', function(event) {
+    event.preventDefault(); // Предотвращаем переход по ссылке
+    document.getElementById('stataOverlay').style.display = 'flex';
+});
+
+document.querySelector('.stata').addEventListener('click', function(event) {
+    // Закрываем оверлей при клике вне его содержимого
+    if (event.target === event.currentTarget) {
+        document.getElementById('stataOverlay').style.display = 'none';
+    }
+});
