@@ -187,3 +187,16 @@ function showNextSlide(slideNumber) {
 function closeGuide() {
     document.getElementById('overlayGuide').style.display = 'none';
 }
+document.querySelector('.info_head').addEventListener('click', function() {
+    document.getElementById('infoOverlay').style.display = 'flex';
+});
+
+document.getElementById('infoCloseBtn').addEventListener('click', function() {
+    document.getElementById('infoOverlay').style.display = 'none';
+});
+
+document.getElementById('infoOverlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+});

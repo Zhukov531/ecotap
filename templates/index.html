@@ -22,6 +22,26 @@
         </div>
     </div>
     
+    <div class="info-overlay" id="infoOverlay">
+    <div class="info">
+        <div class="info-content">
+            <button class="closeinfo-btn" id="infoCloseBtn">
+                <img src="{{ url_for('static', path='img/close.svg') }}" alt="Закрыть">
+            </button>
+            <ul>
+                <li>Посадка и полив:</li>
+                <p>Сажайте ростки и поливайте их, чтобы вырастить деревья. Каждый этап полива открывается каждые 12 часов.</p>
+                <li>Заповедник:</li>
+                <p>Пересаживайте взрослые деревья в заповедник и получайте вознаграждения.</p>
+                <li>Награды:</li>
+                <p>Зарабатывайте токены ECO за полив и пересадку. Чем больше деревьев, тем выше ваш множитель награды. Увеличивайте награды, приглашая друзей и выполняя активности.</p>
+                <li>Улучшения:</li>
+                <p>Приобретайте улучшения, чтобы увеличить свой доход.</p>
+            </ul>
+        </div>
+    </div>
+</div>
+
     <!---------------------------------------------------------->
 
     <div class="app">
@@ -29,7 +49,7 @@
             <div class="top">
                 <div class="header">
                     <a href="#">
-                        <img class="info_head" src="{{ url_for('static', path='img/info.svg') }}" alt="">
+                        <img class="info_head" src="{{ url_for('static', path='img/info.svg') }}" alt="info">
                     </a>
                     <a class="rait-top" href="#">
                         <div class="score">
@@ -197,7 +217,7 @@ and recieve special rewards! </p>
             <img src="{{ url_for('static', path='/img/1.svg') }}" alt="Горшок" id="mainImage">
         </div>
     </div>
-
+    
     
 
     <script src="{{ url_for('static', path='js/script.js') }}"></script>
