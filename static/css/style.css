@@ -118,9 +118,10 @@ body {
 
 .bluecontent {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     height: 100%;
+    /* background: red; */
 }
 
 .manag-content {
@@ -129,6 +130,8 @@ body {
     align-items: center;
     color: white;
     width: 100%;
+    /* background: blue; */
+    margin-bottom: 5%;
 }
 
 .manag-drops {
@@ -203,15 +206,15 @@ body {
 /* Стили для Circle Image */
 .circle-overlay {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
 }
 
 .circle-overlay img {
-    width: 250px; /* Подгоните размер по необходимости */
-    height: 250px;
+    width: 400px; /* Подгоните размер по необходимости */
+    /* height: 400px; */
     /* border-radius: 50%; */
 }
 
@@ -292,4 +295,8 @@ body {
 .button.disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.pustoidiv{
+    min-height: 50%;
 }
