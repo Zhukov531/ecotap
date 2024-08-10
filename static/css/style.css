@@ -20,8 +20,11 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
     font-family: Arial, sans-serif;
-    
-    overflow: hidden;
+
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100vh;
 }
 
 .app {
