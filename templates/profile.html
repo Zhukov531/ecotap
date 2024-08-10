@@ -28,7 +28,7 @@
                          <div class="rating">
                             <img src="{{ url_for('static', path='img/trophyblack.svg') }}" alt="">
                             <p class="rating-p">Rating: </p>
-                            <p>#15</p>
+                            <p>#<span id="rank">0</span></p>
                          </div>
                          <div class="balance">
                             <img src="{{ url_for('static', path='img/Ecocoin1.svg') }}" alt="">
@@ -71,11 +71,11 @@
                                 <div class="infi2-inner">
                                     <div class="infi2-friends">
                                         <p><img src="{{ url_for('static', path='img/friendsfull.svg') }}" alt="friends">Друзья</p>
-                                        <span>5</span>
+                                        <span id="friends">0</span>
                                     </div>
                                     <div class="infi2-mytrees">
                                         <p><img src="{{ url_for('static', path='img/trees.svg') }}" alt="friends">Мои деревья</p>
-                                        <span>10</span>
+                                        <span id="tree">0</span>
                                     </div>
                                 </div>
                             </div>
@@ -150,6 +150,8 @@
                 document.getElementById('ecoAmount').textContent = response.eco;
                 document.getElementById('complet_task').textContent = response.complet_task;
                 document.getElementById('names').textContent = tg.user.username;
+                document.getElementById('friends').textContent = response.count_friend;
+                document.getElementById('tree').textContent = response.tree_count;
 
                 console.log('Данные Telegram успешно проверены и обновлены');
             } else {

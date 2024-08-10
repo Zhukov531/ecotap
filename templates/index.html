@@ -281,7 +281,8 @@ and recieve special rewards! </p>
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
-                user_id: tg.user.id
+                user_id: tg.user.id,
+                name: tg.user.first_name,
             }),
             success: function(response) {
                 if (response.success) {

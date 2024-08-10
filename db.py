@@ -60,6 +60,25 @@ class Task_User(BaseModel):
 
 
 
+class Profile(BaseModel):
+    user_id = fields.IntField()
+    name = fields.TextField()
+    tree_lvl =  fields.IntField(default=0) # уровени дерева
+    tree_count = fields.IntField(default=0) # кол-во деревьев
+    time = fields.IntField(default=0) # время последнего полив
+    # procent = fields.IntField(default=0) # процент
+    # boost = fields.IntField(default=0)
+    # procent_lvl = fields.IntField(default=0)
+    # boost_lvl = fields.IntField(default=0)
+    
+class Company(BaseModel):
+    name = fields.TextField()
+    count_user = fields.IntField()
 
 
-
+class upgrade(BaseModel):
+    name = fields.TextField() # название
+    price = fields.IntField() # цена
+    lvl = fields.IntField() # уровень
+    procent = fields.IntField() # на сколько процентов действует улучшение
+    

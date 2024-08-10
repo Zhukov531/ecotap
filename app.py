@@ -59,7 +59,10 @@ async def handle_user_data(request: Request):
     data = await request.json()
     user_id = data.get('user_id')
 
-    user = await User.get(user_id=user_id)
+    user, create = await User.get_or_create(user_id=user_id)
+    if create:
+        user.name = data.get('name')
+        await user.save()
     """rating - место в рейтинге
 eco - кол-во токенов
 jeton - кол-во жетонов
@@ -88,20 +91,26 @@ async def handle_user_profile(request: Request):
     user_id = data.get('user_id')
 
     user = await User.get(user_id=user_id)
-    count = await Task_User.filter(user_id=user_id).count()
+    complet_task = await Task_User.filter(user_id=user_id).count()
+    reff = await User.all().filter(ref=user_id).count()
+    rank = await get_user_rank(user_id)
     """профиль
 rating - место в рейтинге
 eco - кол-во токенов
 jeton - кол-во жетонов
-complet_task - кол-во выполненных задач"""
-  
+complet_task - кол-во выполненных задач
+tree_count - кол-во деревьев
+count_friend - кол-во друзей
+"""
     if user_id:
         # Пример ответа, можно заменить на реальную логику
         return JSONResponse(content={"success": True,
-        'rating': 1,
+        'rating': rank,
         'eco': user.balance,
         'jeton': 0,
-        'complet_task': count,
+        'complet_task': complet_task,
+        'tree_count': 0,
+        'count_friend': reff,
         }, status_code=200)
     else:
         return JSONResponse(content={"success": False}, status_code=400)
@@ -119,3 +128,19 @@ async def add_eco(request: Request):
     await user.save()
 
     return JSONResponse(content={"success": True, "new_balance": user.balance}, status_code=200)
+
+
+
+
+
+async def get_user_rank(user_id: int):
+    # Получаем всех пользователей, отсортированных по балансу в убывающем порядке
+    users = await User.all().order_by('-balance').values_list('user_id', flat=True)
+
+    # Находим позицию пользователя в этом списке
+    try:
+        rank = users.index(user_id) + 1
+    except ValueError:
+        rank = None  # Если пользователь не найден
+    
+    return rank
