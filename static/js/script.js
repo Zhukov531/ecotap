@@ -16,9 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let waterButton = document.getElementById('waterButton');
     let transferButton = document.getElementById('transferButton');
     let mainImage = document.getElementById('mainImage');
+
     let drops = document.querySelectorAll('.drop');
-    let currentDrop = 0;
-    let currentStage = 0;
+    let currentDrop;
+    let currentStage;
     let timer;
 
     // Массив изображений для различных стадий дерева
@@ -30,6 +31,42 @@ document.addEventListener('DOMContentLoaded', function () {
         '/static/img/6.svg',
         '/static/img/7.svg'
     ];
+
+    // Получение данных от сервера
+    var tg = Telegram.WebApp.initDataUnsafe || 0;
+
+    $.ajax({
+        url: '/user',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            user_id: tg.user.id,
+        }),
+        success: function(response) {
+            if (response) {
+                currentDrop = response.drop;
+                currentStage = response.tree;
+
+                console.log('Данные о состоянии успешно получены', currentDrop, currentStage);
+                
+                // Применяем текущие значения
+                updateTreeState();
+            } else {
+                console.log('Ошибка при получении данных о состоянии');
+            }
+        },
+        error: function() {
+            console.log('Ошибка при отправке данных на сервер');
+        }
+    });
+
+    function updateTreeState() {
+        // Пример использования текущих значений
+        mainImage.src = treeStages[currentStage];
+        // Другие действия с currentDrop и currentStage
+    }
+});
+
 
     // Обработчик клика по кнопке семечка
     seedButton.addEventListener('click', function () {
@@ -101,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Добавление токенов eco
         let ecoElement = document.getElementById('eco'); // Получаем элемент с количеством токенов ECO
         let currentEco = parseInt(ecoElement.textContent); // Получаем текущее количество токенов ECO
-        let newEco = currentEco + 100; // Добавляем 100 токенов ECO
+        let newEco = currentEco + 1000; // Добавляем 100 токенов ECO
         ecoElement.textContent = newEco; // Обновляем текст с количеством токенов ECO
     });
 

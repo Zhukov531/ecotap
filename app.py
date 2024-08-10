@@ -59,30 +59,28 @@ async def handle_user_data(request: Request):
     data = await request.json()
     user_id = data.get('user_id')
 
-    user, create = await User.get_or_create(user_id=user_id)
-    if create:
+    user, created = await User.get_or_create(user_id=user_id)
+    if created:
         user.name = data.get('name')
         await user.save()
-    """rating - место в рейтинге
-eco - кол-во токенов
-jeton - кол-во жетонов
-tree - уровень растения (1-7)
-drop - кол-во капель
-timer - время последнего полив
-"""
-    # Здесь можно добавить логику для обработки данных, например запрос в базу данных
-    # Например:
+
     if user_id:
-        # Пример ответа, можно заменить на реальную логику
-        return JSONResponse(content={"success": True,
-        'rating': 1,
-        'eco': user.balance,
-        'jeton': 0,
-        'tree': 1,
-        'drop': 0,
-        'timer': 0 }, status_code=200)
+        # Допустим, у пользователя есть поля `tree_level` и `drop_count`
+        tree_level = user.tree_level
+        drop_count = user.drop_count
+
+        return JSONResponse(content={
+            "success": True,
+            "rating": await get_user_rank(user_id),
+            "eco": user.balance,
+            "jeton": 0,
+            "tree": tree_level,
+            "drop": drop_count,
+            "timer": user.timer  # Если это поле отслеживает время полива
+        }, status_code=200)
     else:
         return JSONResponse(content={"success": False}, status_code=400)
+
 
 
 @app.post("/user-data-profile")
