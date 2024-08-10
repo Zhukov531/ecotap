@@ -54,6 +54,10 @@ def get_friend(request: Request):
 def get_upgrade(request: Request):
     return templ.TemplateResponse('upgrade.html', context={'request': request})
 
+@app.get("/preview", name='preview')
+def get_upgrade(request: Request):
+    return templ.TemplateResponse('preview.html', context={'request': request})
+
 @app.post("/user-data")
 async def handle_user_data(request: Request):
     data = await request.json()

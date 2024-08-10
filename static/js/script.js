@@ -1,16 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Показать всплывающее окно при загрузке страницы
-    document.getElementById('languagePopup').classList.remove('hidden');
-
-    // Обработчики кликов для выбора языка
-    document.getElementById('langRu').addEventListener('click', function () {
-        document.getElementById('languagePopup').classList.add('hidden');
-    });
-
-    document.getElementById('langEn').addEventListener('click', function () {
-        document.getElementById('languagePopup').classList.add('hidden');
-    });
-
     let timerElement = document.getElementById('timer');
     let seedButton = document.getElementById('seedButton');
     let waterButton = document.getElementById('waterButton');
@@ -18,11 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let mainImage = document.getElementById('mainImage');
 
     let drops = document.querySelectorAll('.drop');
-    let currentDrop;
-    let currentStage;
-    let timer;
+    let currentDrop = 0;
+    let currentStage = 0;
+    let timer = null;
 
-    // Массив изображений для различных стадий дерева
     const treeStages = [
         '/static/img/2.svg',
         '/static/img/3.svg',
@@ -31,42 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         '/static/img/6.svg',
         '/static/img/7.svg'
     ];
-
-    // Получение данных от сервера
-    var tg = Telegram.WebApp.initDataUnsafe || 0;
-
-    $.ajax({
-        url: '/user',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            user_id: tg.user.id,
-        }),
-        success: function(response) {
-            if (response) {
-                currentDrop = response.drop;
-                currentStage = response.tree;
-
-                console.log('Данные о состоянии успешно получены', currentDrop, currentStage);
-                
-                // Применяем текущие значения
-                updateTreeState();
-            } else {
-                console.log('Ошибка при получении данных о состоянии');
-            }
-        },
-        error: function() {
-            console.log('Ошибка при отправке данных на сервер');
-        }
-    });
-
-    function updateTreeState() {
-        // Пример использования текущих значений
-        mainImage.src = treeStages[currentStage];
-        // Другие действия с currentDrop и currentStage
-    }
-});
-
 
     // Обработчик клика по кнопке семечка
     seedButton.addEventListener('click', function () {
@@ -101,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Обработчик клика по кнопке recycle
     transferButton.addEventListener('click', function () {
-        // Сброс переменных и элементов интерфейса
         currentDrop = 0;
         currentStage = 0;
         mainImage.src = '/static/img/1.svg'; // Возвращаем основное изображение на первую стадию
@@ -111,21 +61,18 @@ document.addEventListener('DOMContentLoaded', function () {
         drops.forEach(drop => drop.src = '/static/img/whitedrop.svg');
         document.querySelector('.manag-text p').textContent = 'Посадите дерево';
         timerElement.textContent = '00:00:00'; // Сбрасываем текст таймера
+
         $.ajax({
-            url: '/add-eco',  // Замените на правильный URL вашего эндпоинта
+            url: '/add-eco',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
-                user_id: tg.user.id,  // Подставляем user_id пользователя
+                user_id: tg.user.id,
                 amount: 1000  // Указываем количество эконов для пополнения
             }),
             success: function(response) {
                 if (response.success) {
-                    // Обновляем баланс эконов на странице
                     document.getElementById('ecoAmount').textContent = response.new_balance;
-
-                    // Если нужно, перезагрузите данные страницы (не обязательно перезагружать всю страницу)
-                    // Например, обновите другие элементы, если нужно
                     console.log('Баланс успешно обновлён');
                 } else {
                     console.log('Ошибка при пополнении эконов');
@@ -135,32 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Ошибка при отправке запроса на сервер');
             }
         });
-        // Добавление токенов eco
-        let ecoElement = document.getElementById('eco'); // Получаем элемент с количеством токенов ECO
-        let currentEco = parseInt(ecoElement.textContent); // Получаем текущее количество токенов ECO
-        let newEco = currentEco + 1000; // Добавляем 100 токенов ECO
-        ecoElement.textContent = newEco; // Обновляем текст с количеством токенов ECO
     });
 
-    // Функция запуска таймера
     function startTimer() {
-        let timeLeft = 3; // Установить таймер на 3 секунды
-        disableButtons(); // Заблокировать кнопки
+        let timeLeft = 3;
+        disableButtons();
         timer = setInterval(function () {
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 timer = null;
-                enableButtons(); // Разблокировать кнопки
+                enableButtons();
                 timerElement.textContent = '00:00:00';
             } else {
-                let seconds = timeLeft % 60;
-                timerElement.textContent = `00:00:${seconds < 10 ? '0' + seconds : seconds}`;
+                timerElement.textContent = `00:00:${timeLeft < 10 ? '0' + timeLeft : timeLeft}`;
                 timeLeft--;
             }
         }, 1000);
     }
 
-    // Функция блокировки кнопок
     function disableButtons() {
         seedButton.disabled = true;
         waterButton.disabled = true;
@@ -168,83 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
         waterButton.classList.add('disabled');
     }
 
-    // Функция разблокировки кнопок
     function enableButtons() {
         seedButton.disabled = false;
         waterButton.disabled = false;
         seedButton.classList.remove('disabled');
         waterButton.classList.remove('disabled');
-        if (currentDrop >= drops.length) {
-            document.querySelector('.manag-text p').textContent = 'Отправьте дерево в заповедник';
-        } else {
-            document.querySelector('.manag-text p').textContent = 'Полейте ваше дерево';
-        }
-    }
-});
-// Функция для отображения следующего слайда
-function showNextSlide(slideNumber) {
-    // Скрыть все слайды
-    const slides = document.querySelectorAll('.guide-slide');
-    slides.forEach(slide => {
-        slide.style.display = 'none';
-    });
-
-    // Показать слайд с указанным номером
-    const currentSlide = document.getElementById('slide' + slideNumber);
-    currentSlide.style.display = 'block';
-}
-
-// Функция для закрытия гида
-function closeGuide() {
-    const overlay = document.getElementById('overlayGuide');
-    overlay.style.display = 'none';
-}
-
-// Инициализация первого слайда
-document.addEventListener('DOMContentLoaded', function() {
-    showNextSlide(1);
-});
-function showNextSlide(slideNumber) {
-    // Скрываем все слайды
-    var slides = document.querySelectorAll('.guide-slide');
-    slides.forEach(function(slide) {
-        slide.style.display = 'none';
-    });
-
-    // Показываем текущий слайд
-    var currentSlide = document.getElementById('slide' + slideNumber);
-    currentSlide.style.display = 'block';
-
-    // Обновляем текст шага
-    var totalSlides = slides.length;
-    var stepText = document.getElementById('stepText');
-    stepText.textContent = 'Step ' + slideNumber + ' of ' + totalSlides;
-}
-
-function closeGuide() {
-    document.getElementById('overlayGuide').style.display = 'none';
-}
-document.querySelector('.info_head').addEventListener('click', function() {
-    document.getElementById('infoOverlay').style.display = 'flex';
-});
-
-document.getElementById('infoCloseBtn').addEventListener('click', function() {
-    document.getElementById('infoOverlay').style.display = 'none';
-});
-
-document.getElementById('infoOverlay').addEventListener('click', function(event) {
-    if (event.target === this) {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-});
-document.querySelector('.rait-top').addEventListener('click', function(event) {
-    event.preventDefault(); // Предотвращаем переход по ссылке
-    document.getElementById('stataOverlay').style.display = 'flex';
-});
-
-document.querySelector('.stata').addEventListener('click', function(event) {
-    // Закрываем оверлей при клике вне его содержимого
-    if (event.target === event.currentTarget) {
-        document.getElementById('stataOverlay').style.display = 'none';
     }
 });
